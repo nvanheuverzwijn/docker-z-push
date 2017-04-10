@@ -22,6 +22,7 @@ COPY ./mybackend /usr/share/z-push/backend/mybackend
 ```
 
 You can also mount every folder on runtime.
+
 ```
 docker run -t nvanheuverzwijn/z-push -v /mybackend:/usr/share/z-push/backend/mybackend
 ```
@@ -35,21 +36,24 @@ Every log from apache and php5-fpm is going to PID1 stdout which is the stdout o
 
 ## Examples
 
-###Build and run
-``
+### Build and run
+
+```
 docker build . -t z-push
 docker run --name z-push -p 80:80 --rm -t z-push
 ```
 
-###Start a shell:
+### Start a shell:
+
 ```
 docker run --rm --name z-push  -p 80:80 -t z-push
 docker exec -ti z-push /bin/bash
 ```
 
-###Mounting configuration and backend on run-time:
+### Mounting configuration and backend on run-time:
 
 Assuming that `~/mybackend` is the emplacement of your backend and that `~/z-push.conf` is the z-push configuration:
+
 ```
 docker run --rm --name z-push -v ~/mybackend:/usr/share/z-push/backend/mybackend -v ~/z-push.conf:/etc/z-push/z-push.conf-t z-push
 ```
